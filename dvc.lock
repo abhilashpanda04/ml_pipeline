@@ -21,7 +21,7 @@ stages:
       md5: 7d814a1bda02145efe703f4e1c01847a
       size: 91999
     - path: src/stage_02_split.py
-      md5: 49db33ef50d9d1b908b44499a038e289
+      md5: d11d6a65dbd6941c969c68905e488de5
       size: 1153
     params:
       params.yaml:
@@ -33,8 +33,8 @@ stages:
         base.test_size: 0.2
     outs:
     - path: artifacts/processed_data/test.csv
-      md5: 28f99173b1f478f27d10b29c88eec413
-      size: 19153
+      md5: b0a1dbeb7586d88a8be61abde64f9114
+      size: 18511
     - path: artifacts/processed_data/train.csv
-      md5: 7ca95e953110bf8424f536b770ef58dd
-      size: 76194
+      md5: d6dded45f97a8e239b8321d3fdc695b7
+      size: 73634
