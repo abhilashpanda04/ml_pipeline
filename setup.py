@@ -12,14 +12,15 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/abhilashpanda04/ml_pipeline.git',
     author_email='abhilashk.isme1517@gmail.com',
-    package_dir={"":"src"},
-    packages=find_packages(where='src'),
+    # package_dir={"":"src"},
+    # packages=find_packages(where='src'),
+    packages=['src'],
     python_requires='>=3.6',
-    licence='GNU',
+    license='GNU',
     install_requires=[
         'dvc',
         'dvc[gdrive]',
-        'dvc[s3]'
+        'dvc[s3]',
         'pandas',
         'scikit-learn'
     ]
