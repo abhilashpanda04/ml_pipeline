@@ -1,0 +1,10 @@
+# -e .
+dvc
+dvc[gdrive]
+dvc[s3]
+pytest
+tox
+flake8
+flask
+pandas
+scikit-learn
