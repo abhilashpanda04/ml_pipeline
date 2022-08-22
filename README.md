@@ -1,4 +1,4 @@
-# ml_pipeline
+# ML_PipeLine
 simple ml pipeline with DVC(Data Version Control)
               +-----------+       
               | load_data |       
