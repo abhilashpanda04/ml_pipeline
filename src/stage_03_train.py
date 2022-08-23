@@ -1,20 +1,17 @@
-from re import L
-from tkinter import E
 import pandas as pd
 import argparse
 from src.utils.common_utils import read_param,create_dir,save_local_df,saved_reports
 from sklearn.linear_model import ElasticNet
 import joblib
+import logging
 
+logging_str="[%(asctime)s:%(levelname)s:%(module)s:%(message)s]"
+logging.basicConfig(level=logging.DEBUG,format=logging_str)
 
 def train(config_path):
     config=read_param(config_path)
-
     artifacts=config["artifacts"]
-
     split_data=artifacts["split_data"]
-    processed_data_dir=split_data["processed_data_dir"]
-    test_data_path=split_data["test_path"]
     train_data_path=split_data["train_path"]
 
 
@@ -32,7 +29,7 @@ def train(config_path):
     train=pd.read_csv(train_data_path,sep=',')
     train_y=train[target_column]
     train_x=train.drop([target_column],axis=1)
-    test=pd.read_csv(test_data_path,sep=',')
+
 
     lr=ElasticNet(alpha=alpha,l1_ratio=l1_ratio,random_state=random_state)
     lr.fit(train_x,train_y)
@@ -52,7 +49,8 @@ def train(config_path):
     saved_reports(param_file,params)
 
     joblib.dump(lr,model_path)
-    scores_file=reports["scores"]
+
+    logging.info(f'model saved at {model_path}')
 
 
 if __name__=="__main__":
@@ -62,5 +60,6 @@ if __name__=="__main__":
 
     try:
         data=train(config_path=parsed_args.config)
+        logging.info('training stage completed')
     except Exception as e:
-        raise e
+        logging.error(e)

@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 import argparse
 from src.utils.common_utils import read_param,create_dir,save_local_df
@@ -38,5 +39,7 @@ if __name__=="__main__":
 
     try:
         data=split_and_save_data(config_path=parsed_args.config)
+        logging.info('split data stage completed')
     except Exception as e:
-        raise e
+        logging.error(e)
+        # raise e
